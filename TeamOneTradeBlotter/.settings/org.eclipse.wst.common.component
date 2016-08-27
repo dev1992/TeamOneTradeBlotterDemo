@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TeamOneTradeBlotter">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="TeamOneTradeBlotterJPA.jar" deploy-path="/lib" handle="module:/resource/TeamOneTradeBlotterJPA/TeamOneTradeBlotterJPA">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterEJB.jar" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterEJB/TeamOneTradeBlotterEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterEJBClient.jar" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterEJBClient/TeamOneTradeBlotterEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterWeb.war" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterWeb/TeamOneTradeBlotterWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
