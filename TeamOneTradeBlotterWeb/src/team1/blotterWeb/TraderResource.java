@@ -6,7 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -50,6 +52,18 @@ public class TraderResource {
 			return "true";
 		else
 			return "false";
+	}
+
+	@POST
+	@Path("/signinsecure")
+	@Consumes("application/x-www-form-urlencoded")
+	public String checkLoginCredentialsSecure(@FormParam("username") String username,
+			@FormParam("password") String password) {
+		if (myLocalBean.checkLogin(username, password)) {
+			return "true";
+		} else {
+			return "false";
+		}
 	}
 
 	@GET
