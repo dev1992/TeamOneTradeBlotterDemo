@@ -1,6 +1,3 @@
-/**
- * 
- */
 package team1.blotterWeb;
 
 import java.util.List;
@@ -12,21 +9,20 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import team1.blotterJPA.Trade;
+import javax.ws.rs.QueryParam;
+
+import team1.blotterJPA.Trader;
 import team1.blotterSB.BlotterSessionBeanLocal;
 
-/**
- * @author Grad70
- *
- */
 @RequestScoped
-@Path("/trades")
+@Path("/traders")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class TradeResource {
+public class TraderResource {
+
 	private BlotterSessionBeanLocal myLocalBean;
 
-	public TradeResource() {
+	public TraderResource() {
 		try {
 			InitialContext context = new InitialContext();
 			myLocalBean = (BlotterSessionBeanLocal) context.lookup(
@@ -38,11 +34,31 @@ public class TradeResource {
 
 	@GET
 	@Produces("application/json")
-	public List<Trade> getTrades() {
+	public List<Trader> getTraders() {
 
 		if (myLocalBean == null)
 			return null;
-		return myLocalBean.getAllTrades();
+		return myLocalBean.getAllTraders();
 	}
 
+	@GET
+	@Path("/signin")
+	@Produces("text/plain")
+	public String checkLoginCredentials(@QueryParam("username") String username,
+			@QueryParam("password") String password) {
+		if (myLocalBean.checkLogin(username, password))
+			return "true";
+		else
+			return "false";
+	}
+
+	@GET
+	@Path("/register")
+	@Produces("text/plain")
+	public String registerUser(@QueryParam("userName") String username, @QueryParam("password") String password) {
+		if (myLocalBean.registerTrader(username, password))
+			return "true";
+		else
+			return "false";
+	}
 }

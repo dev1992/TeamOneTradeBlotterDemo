@@ -20,7 +20,7 @@ public class RestApplication extends Application {
 
 	public RestApplication() {
 		singletons.add(new TradeResource());
-
+		singletons.add(new TraderResource());
 	}
 
 	public Set<Class<?>> getClasses() {
